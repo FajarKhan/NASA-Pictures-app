@@ -2,15 +2,9 @@ package com.fajarkhan.nasapicapp.view
 
 import android.app.Dialog
 import android.content.Context
-import android.graphics.Color
-import android.os.Build
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.transition.Slide
-import android.transition.TransitionManager
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.Window
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -22,7 +16,6 @@ import com.fajarkhan.nasapicapp.viewmodel.PictureViewModel
 import com.fajarkhan.nasapicapp.viewmodel.PictureViewModelFactory
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.activity_picture_details.*
-import kotlinx.android.synthetic.main.swipe_onborading_popup_layout.*
 
 class PictureDetailActivity : AppCompatActivity() {
 
@@ -36,6 +29,7 @@ class PictureDetailActivity : AppCompatActivity() {
     }
 
     private lateinit var pictureViewModel: PictureViewModel
+    private lateinit var shared: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,16 +42,26 @@ class PictureDetailActivity : AppCompatActivity() {
         showSwipePopup()
     }
 
-    private fun showSwipePopup(){
+    private fun showSwipePopup() {
+        shared =
+            getSharedPreferences(getString(R.string.first_open_shared_pref), Context.MODE_PRIVATE)
+
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.swipe_onborading_popup_layout)
         val yesBtn = dialog.findViewById(R.id.ok_button) as MaterialButton
         yesBtn.setOnClickListener {
+
+            val edit = shared.edit()
+            edit.putBoolean(getString(R.string.first_open), true)
+            edit.apply()
             dialog.dismiss()
         }
-        dialog.show()
+
+        //to check weather user clicked popup before
+        if (!shared.getBoolean(getString(R.string.first_open), false))
+            dialog.show()
     }
 
 

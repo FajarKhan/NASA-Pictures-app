@@ -8,5 +8,7 @@
     <string name="image_shared_element_animation">image anim</string>
     <string name="text_onboarding_instruction">Swipe left or right to view more pictures</string>
     <string name="text_ok">OK</string>
+    <string name="first_open">firstOpen</string>
+    <string name="first_open_shared_pref">firstOpenSharedPref</string>
 
 </resources>
