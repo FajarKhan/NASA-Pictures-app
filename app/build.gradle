@@ -43,9 +43,11 @@ dependencies {
 
     //Material Design
     implementation "com.google.android.material:material:1.2.0-alpha04"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     //LOTTIE
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation "com.airbnb.android:lottie:4.2.2"
+
 
     //VIEWPAGER2
     implementation "androidx.viewpager2:viewpager2:1.0.0"

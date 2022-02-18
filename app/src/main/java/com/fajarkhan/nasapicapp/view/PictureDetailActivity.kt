@@ -1,6 +1,16 @@
 package com.fajarkhan.nasapicapp.view
 
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.Window
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -10,7 +20,9 @@ import com.fajarkhan.nasapicapp.repository.PictureRepositoryImpl
 import com.fajarkhan.nasapicapp.utils.ViewPagerTransformation
 import com.fajarkhan.nasapicapp.viewmodel.PictureViewModel
 import com.fajarkhan.nasapicapp.viewmodel.PictureViewModelFactory
+import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.activity_picture_details.*
+import kotlinx.android.synthetic.main.swipe_onborading_popup_layout.*
 
 class PictureDetailActivity : AppCompatActivity() {
 
@@ -32,7 +44,22 @@ class PictureDetailActivity : AppCompatActivity() {
         viewModelSetUp()
 
         loadDataAndUpdateUI()
+
+        showSwipePopup()
     }
+
+    private fun showSwipePopup(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.swipe_onborading_popup_layout)
+        val yesBtn = dialog.findViewById(R.id.ok_button) as MaterialButton
+        yesBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
 
     private fun loadDataAndUpdateUI() {
         //Get the data from the viewModel
