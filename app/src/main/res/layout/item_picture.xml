@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:transitionName="@string/image_shared_element_animation"
+            android:id="@+id/photoThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/desc_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/header" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:padding="8dp"
+            android:fontFamily="@font/abeezee"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:background="@color/pictureTitleBackgroundColor"
+            app:layout_constraintBottom_toBottomOf="@id/photoThumbnail"
+            app:layout_constraintEnd_toEndOf="@id/photoThumbnail"
+            app:layout_constraintStart_toStartOf="@id/photoThumbnail"
+            tools:text="Nebulla Major kosf sdufuoasf dnfis dfdanf fanno fnnfa" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
